@@ -1,28 +1,42 @@
 <?php
-
-	/*
-		Bignamini Claudio ws_inviodati.php
-	*/
 	
+	session_start();
 	include "funzioni.php";
 	
-	if(/*provvisorio, ricorda di testare*/ $product==0)
-	{
-		$jsonString="Errore nessun prodotto inserito";
-	}
-	else
-	{
-		// query per cercare il prodotto con la quantità richiesta
-		$res=query("SELECT * FROM (prodotti INNER JOIN (fornprod INNER JOIN (fornitori INNER JOIN (scoforn INNER JOIN sconti ON scoforn.idSconti = sconti.id) ON fornitori.id = scoforn.idFornitori) ON fornprod.idFornitori = fornitori.id) ON prodotti.id = fornprod.idFornitori) WHERE  prodotti.id =". $_POST["product"] ." AND quantita >=". $_POST["quantity"] .";");
+	/*
+		Bignamini Claudio ws_inviodati.php
 		
-		if($res!=null)
+		As a developer I want this code to check if the data got sent  so that it can start to search for the product informations for the javascript or return error
+	*/
+	
+	if(isset($_POST["id"])) //checks if the $_POST variable is set
+	{
+
+		// query per cercare il prodotto con la quantità richiesta
+		
+		$res=query("SELECT fornitori.id as idFornitore, ragSoc, tCons, nome, prezzo, quantita FROM (prodotti INNER JOIN (fornprod INNER JOIN fornitori ON fornprod.idFornitori = fornitori.id) ON prodotti.id = fornprod.idProdotti) WHERE  prodotti.id =".$_POST["id"]." AND quantita >=".$_POST["quantity"].";");
+		
+		if($res!=null) //checks if any result is found
 		{
-			$jsonString= json_encode($res);
+			
+			$jsonString=json_encode($res);
+			
 		}
 		else
 		{
+			
 			$jsonString="Nessun prodotto trovato";
+			
 		}
+	}
+	else
+	{
+		
+		$jsonString="Non è stato ricevuto nessun dato";
 		
 	}
+	
+	echo $jsonString;
+	
+	return $jsonString;
 ?>
