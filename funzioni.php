@@ -7,11 +7,18 @@
 		Analisi delle funzionalità: function query($query)
 		
 		As a developer i want this function to connect to the database in order to execute the recived query and return the results found
+	
+		Given the function recived a correct query when the function will get called, then the function will return the found data as an associative array
+		
+		Given the function recived an incorrect query when the function will get called, then the function will return a not declared variable
+		
 	*/
 	
 	function query($query) /*$query is a string and contains the query to be executed*/
 	{
 
+		//database informations
+		
 		$dsn="mysql:host=127.0.0.1;dbname=testingresso";
 		$username="root";
 		$password="";
@@ -27,10 +34,10 @@
 		}
 		catch (PDOException $e)
 		{
-			$error = $e->getMessage();
+			$error = $e->getMessage(); 
 		}
 		
-		return $resultVet;
+		return $resultVet; // returns the variable with all the found elements from the DB
 		
 	}
 	

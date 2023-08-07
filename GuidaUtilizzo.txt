@@ -1,0 +1,20 @@
+Guida all'utilizzo del programma
+
+Prima di far partire il programma bisognerà importare il database del programma dal file.sql (testingresso.sql), sul proprio server;
+se non si importa il file, il programma non funzionerà correttamente, risultando in svariati errori tra i quali: nessun prodotto nel
+campo di selezione del form e messaggi di errore nel momento dell'invio dei dati tramite il form.
+Bisognerà anche trasferire il codice sorgente in un web server, altrimenti il codice php presente non verrà elaborato e non si otterranno
+prodotti nel campo di selezione del form e si otterranno messaggi di errore nel momento dell'invio dei dati tramite il form.
+
+Appena aperto (pagina Home.php) il programma mostrerà una un form con due campi da compilare: il primo è un campo di selezione che permette
+di scegliere un prodotto tra tutti quelli presenti sul database; il secondo invece è un campo numerico che ci permette di selezionare la 
+quantità di pezzi che vogliamo ordinare. Oltre a quelli ci sarà un pulsante "search" che una volta premuto invierà i dati al server per la 
+ricerca delle informazioni relative al prodotto selezionato e con una quantità minima da parte dei fornitori pari a quella inserita nel campo 
+nunerico per poi creare successivamente una tabella con tutti i dati raccolti. Se non si inserirà sia la quantità o un prodotto valido o
+entrambi, il programma non farà comparire la tabella ma ritornerà un messaggio di dati non forniti. Se invece entrambi i dati sono stati 
+forniti ma non ci sono prodotti disponibili o fornitori con quantità sufficenti, il programma mostrerà un messaggio di prodotto non
+disponibile. Se i dati inseriti sono corretti e viene trovata una quantità sufficente del prodotto, il programma mostrerà la tabella con:
+nome del fornitore, prezzo in euro del pezzo singolo, prezzo totale senza sconti, prezzo totale con gli sconti, sconto totale applicato, 
+descrizione degli sconti applicati, tempo di consegna e un bottone per ordinare (non fa nulla).
+
+Bignamini Claudio 

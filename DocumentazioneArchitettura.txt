@@ -1,0 +1,37 @@
+Documentazione Architettura
+
+Questo file contiene tutte le informazioni, in maniera estesa, del programma.
+
+Struttura del programma
+
+Il programma è scritto principalmente in php e javascript, è formato da cinque file: quattro sono file.php e uno è un file.js.
+Il file.js è contenuto nella cartella js e si chiama script.js, contiene le funzioni javascript che, attraverso la tecnica AJAX/AJAJ, 
+creano la tabella e  la visualizzano nella home o visualizzano un messaggio di errore nella home in caso di dati non ricevuti o errore nella
+richiesta, usando un document.getElementById.innerHTML per modificare il contenuto di un tag div apposito.
+I quattro file.php si chiamano: Home.php, funzioni.php, ws_inviodati.php e ws_sconti.php. Home.php è il file aperto di default e che contiene 
+il php che genera il form per l'inserimento dei dati di ricerca (nome del prodotto e quantità desiderata), in parte attraverso un ciclo php 
+e una funzione per ottenere tutti i dati dei prodotti disponibili, e poi conterrà la tabella dei fornitori da cui ordinare o i vari messaggi 
+di errore dei file. Il file funzioni.php contiene la funzione php necessaria ad eseguire delle query, sul database, inserite tramite un 
+parametro di tipo stringa e ritorna il vettore contenente tutti i dati trovati dalla query nel DB. Il file ws_inviodati.php è il file che 
+cerca il prodotto richiesto, tramite il form, dall'utente con la quantità richiesta, ritornando poi una stringa json contenente il risultato 
+della ricerca o ritornando l'errore appropiato che poi verrà elaborato dalla funzione del file javascript. Il file ws_sconti.php è il file 
+che ricerca i dati degli sconti associati al fornitore, ritornandoli sotto forma di stringa json o ritornando l'errore appropiato che poi 
+verrà elaborato dalla funzione del file javascript. 
+
+Scelte tecniche:
+
+Ho usato il php e il javascript come linguaggi di programmazione per creare il codice perchè sono quelli con cui ho lavorato di più 
+recentemente e con cui avevo già una conoscenza dell'implementazione di database nel programma web. Il database usato nel test del 
+programma è MariaDB, lo stesso su cui ho lavorato tutto quest'anno scolastico, accompagnato da Xampp come server locale. Per la connessione
+al database tramite php ho utilizzato la classe PDO che permette di creare un oggetto che rappresenta la connessione al server e richiede
+tre dati per essere istanziato: il destination name che è formato dall' indirizzo IP del host e dal nome del database; il nome dell'utente
+che si vuole che effettui la connessione al DB e la password dell'utente. Per inviare i dati e creare la tabella che contiene i risultati, 
+ho utilizzato l'AJAX/AJAJ che permette di inviare a delle pagine php delle richieste http, in modo da poter ottenere i dati con cui poi 
+lavorare per ottenere la tabella. A differenza dei miei lavori a scuola ho provato a implementare l'invio dei dati tramite AJAX/AJAJ con il 
+metodo POST invece che con il metodo GET per un semplice motivo, i dati inviati rischiavano di essere troppo lunghi per essere inviati 
+tramite GET nella mia idea iniziale del programma perciò ho preferito non rischiare ed utilizzare il POST.
+Ho creato un documento in PDF che contiene tutte le informazioni riguardanti il database creato per questo programma, includendo anche
+il suo schema relazionale per semplificare la comprensione della formazione del database; oltre a quello contiene i nomi di tutti gli 
+attributi delle entità e delle varie chiavi presenti e con una piccola spiegazione del ragionamento dietro la creazione del datbase.
+
+Bignamini Claudio
